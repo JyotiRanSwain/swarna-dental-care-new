@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Swarna Dental Care</title>
+    
+    <meta name="description" content="Read helpful dental tips and insights from Swarna Dental Care experts.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .blog-loading {
+            text-align: center;
+            padding: 3rem 0;
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .blog-error {
+            background: #fee;
+            border-left: 4px solid #f00;
+            padding: 1.5rem;
+            border-radius: 8px;
+            color: #c00;
+            margin: 2rem 0;
+        }
+
+        .blog-add-section {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .blog-add-section p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .blog-add-btn {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .blog-add-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../images/logo.png" alt="Swarna Dental Care" class="logo-img">
+                <div class="logo-text">
+                    <span class="logo-main">Swarna Dental Care</span><br>
+                    <span class="logo-sub">Excellence Since 2016</span>
+                </div>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="../About/index.html" class="nav-link">About</a></li>
+                <li><a href="../Services/index.html" class="nav-link">Services</a></li>
+                <li><a href="index.html" class="nav-link active">Blog</a></li>
+                <li><a href="../Contact/index.html" class="nav-link">Contact</a></li>
+                <li>
+                    <a href="tel:+918093974393" class="btn-call-nav">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>Call Now</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="progress-bar" id="progressBar"></div>
+    </nav>
+
+    <!-- Blog Hero -->
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <h1 data-aos="fade-up">Dental Blog</h1>
+            <p data-aos="fade-up" data-aos-delay="100">Expert Tips, Insights & Dental Care Advice</p>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section">
+        <div class="container">
+            <!-- Add Blog Section -->
+            <div class="blog-add-section" data-aos="fade-up">
+                <h3>Share Your Dental Story</h3>
+                <p>Have a dental tip or transformation story to share? Let us know!</p>
+                <!-- <button class="blog-add-btn" onclick="document.getElementById('addBlogModal').style.display='flex'">
+                    <i class="fas fa-plus"></i> Add Blog Post
+                </button> -->
+            </div>
+
+            <!-- Blog Container -->
+            <div id="blog-container" class="blog-grid">
+                <div class="blog-loading">
+                    <i class="fas fa-spinner fa-spin"></i> Loading blog posts...
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add Blog Modal -->
+    <div id="addBlogModal" class="blog-modal">
+        <div class="blog-modal-content">
+            <span class="blog-modal-close" onclick="document.getElementById('addBlogModal').style.display='none'">&times;</span>
+            <h2>Add New Blog Post</h2>
+            <form id="blogForm" onsubmit="submitBlogForm(event)">
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" id="blogTitle" required placeholder="Enter blog title">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="blogDescription" required placeholder="Enter blog content"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Image URL</label>
+                    <input type="url" id="blogImage" placeholder="Paste image URL">
+                </div>
+                <div class="form-group">
+                    <label>Author Name</label>
+                    <input type="text" id="blogAuthor" placeholder="Your name">
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i> Submit
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <i class="fas fa-tooth"></i>
+                        <span>Swarna Dental Care</span>
+                    </div>
+                    <p>Providing trusted dental care with modern technology and compassionate service since 2016.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../About/index.html">About</a></li>
+                        <li><a href="../Services/index.html">Services</a></li>
+                        <li><a href="../Contact/index.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Baramunda, Bhubaneswar</li>
+                        <li><i class="fas fa-phone-alt"></i> +91 80939 74393</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 10AM-1PM, 5PM-8PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Swarna Dental Care. All Rights Reserved · Since 2016</p>
+                <p class="powered-by">Powered by <a href="https://jyotiranswain.github.io/powercloud/" target="_blank">PowerCloud</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/918093974393" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-text">Chat with us</span>
+    </a>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Swaboot Chatbot -->
+    <button class="swaboot-launcher" id="swabootLauncher" aria-label="Open Swaboot Chat">
+        <i class="fas fa-comment-dots swaboot-icon-open"></i>
+        <i class="fas fa-times swaboot-icon-close"></i>
+        <span class="swaboot-badge" id="swabootBadge">1</span>
+    </button>
+
+    <div class="swaboot-window" id="swabootWindow" role="dialog" aria-label="Swaboot Dental Assistant">
+        <div class="swaboot-header">
+            <div class="swaboot-avatar-wrap">
+                <span class="swaboot-avatar-emoji">🦷</span>
+                <span class="swaboot-online-dot"></span>
+            </div>
+            <div class="swaboot-header-info">
+                <h3>Swaboot</h3>
+                <span>Swarna Dental Assistant</span>
+            </div>
+            <button class="swaboot-close-btn" id="swabootClose" aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="swaboot-messages" id="swabootMessages"></div>
+        <div class="swaboot-input-wrap">
+            <input type="text" id="swabootInput" class="swaboot-input" placeholder="Ask about appointments, treatments…" autocomplete="off"/>
+            <button class="swaboot-send" id="swabootSend" aria-label="Send">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../js/shared.js"></script>
+    <script src="../js/swaboot.js"></script>
+    <script src="../js/blog.js"></script>
+</body>
+</html>
