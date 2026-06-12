@@ -1,0 +1,145 @@
+/* ===== SOCIAL MEDIA BAR ===== */
+
+.social-media-bar {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999;
+}
+
+/* Share Button */
+.social-bar-toggle {
+    width: 55px;
+    height: 55px;
+    border: none;
+    border-radius: 10px 0 0 10px;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: #fff;
+    cursor: pointer;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -4px 4px 15px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+}
+
+.social-bar-toggle:hover {
+    transform: scale(1.05);
+}
+
+.social-bar-toggle.active {
+    background: linear-gradient(135deg, #14b8a6 0%, #10b981 100%);
+}
+
+/* Hidden by default */
+.social-bar-links {
+    position: absolute;
+    right: 65px;
+    top: 0;
+
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+    background: #fff;
+    padding: 10px 12px;
+    border-radius: 10px 0 0 10px;
+    box-shadow: -4px 4px 20px rgba(0,0,0,0.15);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(20px);
+
+    transition: all 0.3s ease;
+}
+
+/* Show on click */
+.social-bar-links.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+/* Social Icons */
+.social-bar-links a {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    color: #fff;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Facebook */
+.social-bar-links a:nth-child(1) {
+    background: #1877f2;
+}
+
+/* Instagram */
+.social-bar-links a:nth-child(2) {
+    background: #e4405f;
+}
+
+/* WhatsApp */
+.social-bar-links a:nth-child(3) {
+    background: #25d366;
+}
+
+.social-bar-links a:hover {
+    transform: scale(1.15);
+}
+
+/* Tooltip */
+.social-bar-links a::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+.social-bar-links a:hover::after {
+    opacity: 1;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .social-bar-toggle {
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+    }
+
+    .social-bar-links {
+        right: 55px;
+        gap: 8px;
+    }
+
+    .social-bar-links a {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .social-bar-links a::after {
+        display: none;
+    }
+}
