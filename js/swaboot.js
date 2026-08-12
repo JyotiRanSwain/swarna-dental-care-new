@@ -3,7 +3,7 @@
     const QA = [
         {
             patterns: ["appointment", "book", "schedule", "visit", "reserve"],
-            answer: "You can book an appointment easily! 📅 Fill the online form: <a href='../Appointment/index.html' target='_blank' style='color:var(--primary);font-weight:600'>Click here to Book</a>, or call us at <a href='tel:+918093974393' style='color:var(--primary);font-weight:600'>+91 80939 74393</a>."
+            answer: "You can book an appointment easily! 📅 Fill the online form: <a href='https://jyotiranswain.github.io/swarna-dental-care-new/Appointment/index.html' target='_blank' style='color:var(--primary);font-weight:600'>Click here to Book</a>, or call us at <a href='tel:+918093974393' style='color:var(--primary);font-weight:600'>+91 80939 74393</a>."
         },
         {
             patterns: ["tooth pain", "toothache", "pain", "ache", "hurts"],
