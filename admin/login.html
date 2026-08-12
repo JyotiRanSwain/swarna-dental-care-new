@@ -1,126 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Login | Sodesi</title>
-<link rel="icon" type="image/png" href="../images/logo.png" />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #2E7D32 0%, #1B5E20 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
-.login-container { background: white; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); padding: 50px 40px; width: 100%; max-width: 420px; }
-.login-header { text-align: center; margin-bottom: 40px; }
-.login-header img { width: 80px; height: 80px; margin-bottom: 20px; }
-.login-header h1 { color: #2E7D32; font-size: 28px; margin-bottom: 10px; }
-.login-header p { color: #666; font-size: 14px; }
-.form-group { margin-bottom: 24px; }
-.form-group label { display: block; margin-bottom: 8px; color: #333; font-weight: 500; font-size: 14px; }
-.form-group input { width: 100%; padding: 14px 18px; border: 2px solid #e0e0e0; border-radius: 12px; font-size: 15px; font-family: inherit; transition: all 0.3s; }
-.form-group input:focus { outline: none; border-color: #2E7D32; box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.1); }
-.btn { width: 100%; padding: 16px; background: linear-gradient(135deg, #2E7D32 0%, #4CAF50 100%); color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: inherit; }
-.btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(46, 125, 50, 0.4); }
-.btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-.error-message { background: #FFEBEE; color: #C62828; padding: 12px 18px; border-radius: 8px; margin-bottom: 20px; font-size: 14px; display: none; white-space: pre-line; }
-.error-message.show { display: block; }
-.footer-text { text-align: center; margin-top: 30px; color: #999; font-size: 12px; }
-.footer-text a { color: #2E7D32; text-decoration: none; }
-.loading { display: inline-block; width: 20px; height: 20px; border: 3px solid rgba(255,255,255,0.3); border-radius: 50%; border-top-color: white; animation: spin 1s ease-in-out infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Swarna Dental Care</title>
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0284c7 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .login-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .brand-header {
+            margin-bottom: 2rem;
+        }
+
+        .brand-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+        }
+
+        .brand-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-subtitle {
+            font-size: 0.85rem;
+            color: #0284c7;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+            text-align: left;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 0.4rem;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-control:focus {
+            border-color: #0284c7;
+            box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15);
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 0.85rem;
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+            margin-top: 0.5rem;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(2, 132, 199, 0.4);
+        }
+
+        .error-msg {
+            color: #ef4444;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .login-footer {
+            margin-top: 2rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        .login-footer a {
+            color: #0284c7;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-<div class="login-container">
-  <div class="login-header">
-    <img src="../images/logo.png" alt="Sodesi" onerror="this.src='https://via.placeholder.com/80?text=S'">
-    <h1>Admin Portal</h1>
-    <p>Sodesi Management System</p>
-  </div>
 
-  <div class="error-message" id="errorMsg"></div>
+    <div class="login-card">
+        <div class="brand-header">
+            <img src="../images/logo.png" alt="Swarna Dental Care" class="brand-logo" onerror="this.src='../images/logo.png'">
+            <h1 class="brand-title">Swarna Dental Care</h1>
+            <p class="brand-subtitle">Admin Portal Login</p>
+        </div>
 
-  <form id="loginForm">
-    <div class="form-group">
-      <label for="username">Username</label>
-      <input type="text" id="username" required autocomplete="username" placeholder="Enter username">
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <label>Username</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" class="form-control" placeholder="Enter username" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" class="form-control" placeholder="Enter password" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-login" id="loginBtn">
+                <i class="fas fa-sign-in-alt"></i> Sign In
+            </button>
+
+            <div id="errorMsg" class="error-msg"></div>
+        </form>
+
+        <div class="login-footer">
+            <p>Powered by <a href="https://powercloud.in/" target="_blank">Powercloud</a></p>
+        </div>
     </div>
 
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" id="password" required autocomplete="current-password" placeholder="Enter password">
-    </div>
+    <script src="../js/admin.js"></script>
+    <script>
+        async function handleLogin(e) {
+            e.preventDefault();
+            const btn = document.getElementById("loginBtn");
+            const err = document.getElementById("errorMsg");
+            
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Authenticating...';
+            err.style.display = 'none';
 
-    <button type="submit" class="btn" id="loginBtn">
-      <span id="btnText">Login</span>
-    </button>
-  </form>
+            const u = document.getElementById("username").value;
+            const p = document.getElementById("password").value;
 
-  <div class="footer-text">
-    <!-- <p>🔒 Secured by Google Apps Script</p> -->
-    <p><a href="../index.html">← Back to Website</a></p>
-  </div>
-</div>
+            try {
+                const res = await fetch(APPS_SCRIPT_URL, {
+                    method: "POST",
+                    body: JSON.stringify({ action: "login", payload: { username: u, password: p } })
+                });
+                const data = await res.json();
 
-<script>
-// ╔══════════════════════════════════════════════════════════════════╗
-// ║  YOUR APPS SCRIPT URL - UPDATE THIS IF NEEDED                    ║
-// ╚══════════════════════════════════════════════════════════════════╝
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx8V7EceiTzzSw2Yq9GA1tt7SihDHEXLPAu9KJACD5z-2NlGYSzlvnLYVURGAFPde0GRw/exec';
-
-// Already logged in? Go to dashboard immediately
-if (sessionStorage.getItem('sodesi_admin_token')) {
-  window.location.href = 'index.html';
-}
-
-document.getElementById('loginForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  
-  const btn = document.getElementById('loginBtn');
-  const btnText = document.getElementById('btnText');
-  const errorMsg = document.getElementById('errorMsg');
-  
-  btn.disabled = true;
-  btnText.innerHTML = '<span class="loading"></span>';
-  errorMsg.classList.remove('show');
-  
-  try {
-    const response = await fetch(APPS_SCRIPT_URL + '?path=/api/admin/login', {
-      method: 'POST',
-      redirect: 'follow',  // This is the key! Google Apps Script always redirects POST
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify({
-        username: document.getElementById('username').value,
-        password: document.getElementById('password').value
-      })
-    });
-    
-    const text = await response.text();
-    
-    // Detect if Google returned its own login page instead of our JSON
-    if (text.indexOf('accounts.google.com') !== -1 || text.indexOf('<!DOCTYPE html>') !== -1) {
-      throw new Error('Google is blocking access. Check deployment is set to "Anyone".');
-    }
-    
-    const data = JSON.parse(text);
-    
-    if (data.success && data.token) {
-      // SAVE THE TOKEN - the dashboard will use this
-      sessionStorage.setItem('sodesi_admin_token', data.token);
-      sessionStorage.setItem('sodesi_admin_user', JSON.stringify(data.user));
-      // Go to dashboard (no blinking loop!)
-      window.location.href = 'index.html';
-    } else {
-      throw new Error(data.error || 'Login failed');
-    }
-  } catch(err) {
-    console.error('Login error:', err);
-    errorMsg.textContent = err.message;
-    errorMsg.classList.add('show');
-    btn.disabled = false;
-    btnText.textContent = 'Login';
-  }
-});
-</script>
+                if (data.success) {
+                    localStorage.setItem("sdc_token", data.token);
+                    window.location.href = "index.html";
+                } else {
+                    err.innerText = data.message || "Invalid username or password";
+                    err.style.display = 'block';
+                }
+            } catch (error) {
+                err.innerText = "Network connection failed";
+                err.style.display = 'block';
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Sign In';
+            }
+        }
+    </script>
 </body>
 </html>
