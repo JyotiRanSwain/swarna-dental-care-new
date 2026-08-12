@@ -3,267 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - Swarna Dental Care</title>
+    <title>Admin Login - Swarna Dental Care</title>
     <link rel="icon" type="image/png" href="../images/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
-        body { background: #f1f5f9; color: #334155; min-height: 100vh; display: flex; flex-direction: column; }
-
-        /* Top Header */
-        .top-navbar {
-            background: #ffffff;
-            padding: 1rem 2rem;
+        
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0284c7 100%);
+            min-height: 100vh;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            justify-content: center;
+            padding: 1.5rem;
         }
 
-        .brand-info { display: flex; align-items: center; gap: 1rem; }
-        .brand-info img { width: 45px; height: 45px; object-fit: contain; }
-        .brand-text h1 { font-size: 1.15rem; color: #0f172a; font-weight: 700; line-height: 1.2; }
-        .brand-text p { font-size: 0.75rem; color: #0284c7; font-weight: 600; }
+        .login-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
 
-        .btn-logout {
-            background: #fef2f2;
-            color: #ef4444;
-            border: 1px solid #fecaca;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-weight: 600;
+        .brand-header {
+            margin-bottom: 2rem;
+        }
+
+        .brand-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+        }
+
+        .brand-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-subtitle {
             font-size: 0.85rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.2s ease;
+            color: #0284c7;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.2rem;
         }
-        .btn-logout:hover { background: #ef4444; color: #fff; }
 
-        /* Dashboard Container */
-        .container { max-width: 1200px; margin: 2rem auto; padding: 0 1.5rem; flex: 1; width: 100%; }
+        .form-group {
+            margin-bottom: 1.25rem;
+            text-align: left;
+            position: relative;
+        }
 
-        /* Welcome Banner */
-        .welcome-card {
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 0.4rem;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-control:focus {
+            border-color: #0284c7;
+            box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15);
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 0.85rem;
             background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
             color: #ffffff;
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 15px -3px rgba(2, 132, 199, 0.2);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .welcome-card h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.3rem; }
-        .welcome-card p { opacity: 0.9; font-size: 0.9rem; }
-
-        /* Navigation Tabs */
-        .tabs { display: flex; gap: 0.75rem; border-bottom: 2px solid #e2e8f0; margin-bottom: 1.5rem; }
-        .tab-btn {
-            padding: 0.85rem 1.5rem;
             border: none;
-            background: transparent;
-            font-size: 0.95rem;
+            border-radius: 10px;
+            font-size: 1rem;
             font-weight: 600;
-            color: #64748b;
             cursor: pointer;
-            border-bottom: 3px solid transparent;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+            margin-top: 0.5rem;
         }
-        .tab-btn.active { color: #0284c7; border-bottom-color: #0284c7; }
 
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-
-        /* Cards & Forms */
-        .card { background: #ffffff; padding: 1.75rem; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 1.5rem; }
-        .card-header { margin-bottom: 1.5rem; font-size: 1.1rem; color: #0f172a; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
-
-        .form-group { margin-bottom: 1.2rem; }
-        .form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem; color: #475569; }
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%; padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.9rem; outline: none; transition: border 0.2s ease;
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(2, 132, 199, 0.4);
         }
-        .form-group input:focus, .form-group textarea:focus { border-color: #0284c7; }
 
-        /* Tables & Filters */
-        .filter-bar { display: flex; gap: 1rem; align-items: center; margin-bottom: 1.25rem; background: #f8fafc; padding: 0.85rem; border-radius: 10px; border: 1px solid #e2e8f0; }
-        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-        th, td { padding: 0.85rem; border-bottom: 1px solid #f1f5f9; text-align: left; vertical-align: middle; }
-        th { background: #f8fafc; font-weight: 600; color: #475569; }
+        .error-msg {
+            color: #ef4444;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            display: none;
+        }
 
-        /* Buttons */
-        .btn { padding: 0.6rem 1.2rem; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.4rem; transition: all 0.2s ease; }
-        .btn-primary { background: #0284c7; color: white; }
-        .btn-primary:hover { background: #0369a1; }
-        .btn-danger { background: #ef4444; color: white; }
-        .btn-secondary { background: #e2e8f0; color: #475569; }
+        .login-footer {
+            margin-top: 2rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.8rem;
+            color: #64748b;
+        }
 
-        /* Footer */
-        .admin-footer { text-align: center; padding: 1.5rem; background: #ffffff; border-top: 1px solid #e2e8f0; font-size: 0.85rem; color: #64748b; margin-top: auto; }
-        .admin-footer a { color: #0284c7; text-decoration: none; font-weight: 600; }
+        .login-footer a {
+            color: #0284c7;
+            text-decoration: none;
+            font-weight: 600;
+        }
 
-        /* Pagination */
-        .pagination { display: flex; justify-content: space-between; align-items: center; margin-top: 1.25rem; }
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Top Navigation Header -->
-    <div class="top-navbar">
-        <div class="brand-info">
-            <img src="../images/logo.png" alt="Logo" onerror="this.src='../images/logo.png'">
-            <div class="brand-text">
-                <h1>Swarna Dental Care</h1>
-                <p>ADMINISTRATION PANEL</p>
-            </div>
-        </div>
-        <button class="btn-logout" onclick="logout()">
-            <i class="fas fa-sign-out-alt"></i> Logout
-        </button>
-    </div>
-
-    <div class="container">
-        
-        <!-- Personalized Welcome Banner -->
-        <div class="welcome-card">
-            <div>
-                <h2>Welcome, Dr. Sibarpita Subhadarshi Sahu 👋</h2>
-                <p>Manage your appointments, published blogs, and patient details with ease.</p>
-            </div>
-            <i class="fas fa-user-md fa-3x" style="opacity: 0.3;"></i>
+    <div class="login-card">
+        <div class="brand-header">
+            <img src="../images/logo.png" alt="Swarna Dental Care" class="brand-logo" onerror="this.src='../images/logo.png'">
+            <h1 class="brand-title">Swarna Dental Care</h1>
+            <p class="brand-subtitle">Admin Portal Login</p>
         </div>
 
-        <!-- Navigation Tabs -->
-        <div class="tabs">
-            <button class="tab-btn active" onclick="switchTab('newBlog')"><i class="fas fa-pen"></i> New Blog Post</button>
-            <button class="tab-btn" onclick="switchTab('allBlogs')"><i class="fas fa-newspaper"></i> All Blog Posts</button>
-            <button class="tab-btn" onclick="switchTab('appointments')"><i class="fas fa-calendar-check"></i> Appointment Requests</button>
-        </div>
-
-        <!-- TAB 1: New Blog Post -->
-        <div id="tab-newBlog" class="tab-content active">
-            <div class="card">
-                <div class="card-header"><i class="fas fa-plus-circle"></i> Create New Blog Post</div>
-                <form onsubmit="handleAddBlog(event)">
-                    <div class="form-group">
-                        <label>Blog Title *</label>
-                        <input type="text" id="blogTitle" placeholder="e.g. Benefits of Dental Implants" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Description / Content *</label>
-                        <textarea id="blogDesc" rows="6" placeholder="Write full blog content here..." required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Cover Image (Upload file to Google Drive)</label>
-                        <input type="file" id="blogFile" accept="image/*">
-                    </div>
-                    <div class="form-group">
-                        <label>Author Name</label>
-                        <input type="text" id="blogAuthor" value="Dr. Sibarpita Subhadarshi Sahu">
-                    </div>
-                    <button type="submit" class="btn btn-primary" id="blogBtn"><i class="fas fa-paper-plane"></i> Publish Post</button>
-                </form>
-            </div>
-        </div>
-
-        <!-- TAB 2: All Blog Posts -->
-        <div id="tab-allBlogs" class="tab-content">
-            <div class="card">
-                <div class="card-header"><i class="fas fa-list"></i> Published Blog Posts (Newest First)</div>
-                <div style="overflow-x:auto;">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Image</th>
-                                <th>Date</th>
-                                <th>Title</th>
-                                <th>Author</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="blogsBody"></tbody>
-                    </table>
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <label>Username</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" class="form-control" placeholder="Enter username" required>
                 </div>
             </div>
-        </div>
 
-        <!-- TAB 3: Appointment Requests -->
-<div id="tab-appointments" class="tab-content">
-    <div class="card">
-        <div class="card-header"><i class="fas fa-clock"></i> Patient Appointments</div>
-
-        <!-- Search & Filter Bar -->
-        <div class="filter-bar" style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin-bottom: 1.25rem;">
-            <div style="flex: 1; min-width: 220px; position: relative;">
-                <input type="text" id="searchInput" placeholder="Search by Booking ID, Name, or Mobile..." oninput="applyAppointmentFilter()" style="width: 100%; padding: 0.65rem 0.75rem 0.65rem 2.2rem; border: 1px solid #cbd5e1; border-radius: 8px;">
-                <i class="fas fa-search" style="position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: #94a3b8;"></i>
-            </div>
-            
-            <div style="display: flex; gap: 0.5rem; align-items: center;">
-                <label><b>Date:</b></label>
-                <input type="date" id="filterDate" onchange="applyAppointmentFilter()" style="padding: 0.6rem; border: 1px solid #cbd5e1; border-radius: 8px;">
-                <button class="btn btn-secondary" onclick="clearFilters()"><i class="fas fa-undo"></i> Clear</button>
-            </div>
-        </div>
-
-        <div style="overflow-x:auto;">
-            <table style="min-width: 1000px;">
-                <thead>
-                    <tr>
-                        <th style="width: 110px;">Booking ID</th>
-                        <th style="width: 120px;">Booked On</th>
-                        <th style="width: 220px;">Patient Details</th>
-                        <th style="width: 130px;">Appt Date & Slot</th>
-                        <th style="width: 110px;">Visit & Duration</th>
-                        <th style="width: 180px;">Problem & Pain</th>
-                        <th style="width: 100px;">Status</th>
-                        <th style="width: 110px;">Action</th>
-                    </tr>
-                </thead>
-                <tbody id="apptsBody"></tbody>
-            </table>
-        </div>
-
-        <!-- Pagination -->
-        <div class="pagination">
-            <span id="pageInfo">Showing page 1</span>
-            <div style="display: flex; gap: 0.5rem;">
-                <button class="btn btn-secondary" id="prevBtn" onclick="changePage(-1)">Previous</button>
-                <button class="btn btn-secondary" id="nextBtn" onclick="changePage(1)">Next</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-                <!-- Pagination -->
-                <div class="pagination">
-                    <span id="pageInfo">Showing page 1</span>
-                    <div style="display: flex; gap: 0.5rem;">
-                        <button class="btn btn-secondary" id="prevBtn" onclick="changePage(-1)">Previous</button>
-                        <button class="btn btn-secondary" id="nextBtn" onclick="changePage(1)">Next</button>
-                    </div>
+            <div class="form-group">
+                <label>Password</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" class="form-control" placeholder="Enter password" required>
                 </div>
             </div>
+
+            <button type="submit" class="btn-login" id="loginBtn">
+                <i class="fas fa-sign-in-alt"></i> Sign In
+            </button>
+
+            <div id="errorMsg" class="error-msg"></div>
+        </form>
+
+        <div class="login-footer">
+            <p>Powered by <a href="https://powercloud.in/" target="_blank">Powercloud</a></p>
         </div>
-
     </div>
-
-    <!-- Dashboard Footer -->
-    <footer class="admin-footer">
-        <p>&copy; 2026 Swarna Dental Care · Powered by <a href="https://powercloud.in/" target="_blank">Powercloud</a></p>
-    </footer>
 
     <script src="../js/admin.js"></script>
+    <script>
+        async function handleLogin(e) {
+            e.preventDefault();
+            const btn = document.getElementById("loginBtn");
+            const err = document.getElementById("errorMsg");
+            
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Authenticating...';
+            err.style.display = 'none';
+
+            const u = document.getElementById("username").value;
+            const p = document.getElementById("password").value;
+
+            try {
+                const res = await fetch(APPS_SCRIPT_URL, {
+                    method: "POST",
+                    body: JSON.stringify({ action: "login", payload: { username: u, password: p } })
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    localStorage.setItem("sdc_token", data.token);
+                    window.location.href = "dashboard.html";
+                } else {
+                    err.innerText = data.message || "Invalid username or password";
+                    err.style.display = 'block';
+                }
+            } catch (error) {
+                err.innerText = "Network connection failed";
+                err.style.display = 'block';
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Sign In';
+            }
+        }
+    </script>
 </body>
 </html>
