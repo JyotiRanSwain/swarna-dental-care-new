@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment - Swarna Dental Care</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <style>
+        .appt-section { padding: 3rem 1rem; background: var(--light, #f8fafc); }
+        .appt-card {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: var(--radius-lg, 16px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+        .full-width { grid-column: span 2; }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text, #334155);
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1.5px solid #cbd5e1;
+            border-radius: var(--radius, 8px);
+            font-family: inherit;
+            font-size: 0.95rem;
+            outline: none;
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--primary, #0284c7);
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+        }
+        .checkbox-container { display: flex; gap: 0.6rem; align-items: flex-start; margin-top: 0.5rem; }
+        .checkbox-container input { width: auto; margin-top: 0.25rem; cursor: pointer; }
+        .range-container { display: flex; align-items: center; gap: 1rem; }
+        .range-container span { font-weight: 700; color: var(--primary, #0284c7); font-size: 1.1rem; }
+        .btn-submit {
+            width: 100%;
+            background: var(--primary, #0284c7);
+            color: #ffffff;
+            border: none;
+            padding: 1rem;
+            border-radius: var(--radius, 8px);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .btn-submit:hover { background: var(--secondary, #0369a1); }
+        
+        @media (max-width: 640px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+            .appt-card { padding: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../images/logo.png" alt="Swarna Dental Care" class="logo-img">
+                <div class="logo-text">
+                    <span class="logo-main">Swarna Dental Care</span><br>
+                    <span class="logo-sub">Excellence Since 2016</span>
+                </div>
+            </a>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="../About/index.html" class="nav-link">About</a></li>
+                <li><a href="../Services/index.html" class="nav-link">Services</a></li>
+                <li><a href="../Blog/index.html" class="nav-link">Blog</a></li>
+                <li><a href="index.html" class="nav-link active">Contact</a></li>
+                <li>
+                    <a href="tel:+918093974393" class="btn-call-nav">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>Call Now</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="progress-bar" id="progressBar"></div>
+    </nav>
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <h1 data-aos="fade-up">Book Your Appointment</h1>
+            <p data-aos="fade-up" data-aos-delay="100">Schedule your consultation with our dental specialists</p>
+        </div>
+    </section>
+
+    <section class="appt-section">
+        <div class="container">
+            <div class="appt-card" data-aos="fade-up">
+                <form id="appointmentForm" onsubmit="submitAppointment(event)">
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label>Full Name *</label>
+                            <input type="text" id="fullName" required placeholder="Enter full name">
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address *</label>
+                            <input type="email" id="email" required placeholder="name@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Mobile Number (WhatsApp Preferred) *</label>
+                            <input type="tel" id="mobile" required placeholder="10-digit number">
+                        </div>
+                        <div class="form-group">
+                            <label>Age *</label>
+                            <input type="number" id="age" required min="1" max="110">
+                        </div>
+                        <div class="form-group">
+                            <label>Gender *</label>
+                            <select id="gender" required>
+                                <option value="">Select Gender</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Address / Locality (Optional)</label>
+                            <input type="text" id="address" placeholder="e.g. Baramunda, Bhubaneswar">
+                        </div>
+                        <div class="form-group">
+                            <label>Preferred Date *</label>
+                            <input type="date" id="preferredDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Preferred Time Slot *</label>
+                            <select id="preferredTimeSlot" required>
+                                <option value="">Select Time Slot</option>
+                                <option>Morning (10:00 AM - 01:00 PM)</option>
+                                <option>Evening (05:00 PM - 08:00 PM)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Type of Visit *</label>
+                            <select id="typeOfVisit" required>
+                                <option>First Visit</option>
+                                <option>Follow-Up</option>
+                                <option>Routine Consultation</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Duration of Problem *</label>
+                            <select id="duration" required>
+                                <option>1-3 Days</option>
+                                <option>1 Week</option>
+                                <option>1 Month +</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Primary Dental Problem *</label>
+                            <textarea id="primaryProblem" rows="3" required placeholder="Describe your dental issue..."></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Pain Level (0 = No Pain, 10 = Severe Pain)</label>
+                            <div class="range-container">
+                                <input type="range" id="painLevel" min="0" max="10" value="0" oninput="document.getElementById('painVal').innerText = this.value">
+                                <span id="painVal">0</span>
+                            </div>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Do you have any medical conditions?</label>
+                            <input type="text" id="medicalConditions" placeholder="e.g. Diabetes, Hypertension, Allergy, None">
+                        </div>
+                        <div class="form-group full-width checkbox-container">
+                            <input type="checkbox" id="consent" required>
+                            <label for="consent">I confirm that the details provided are correct and consent to receive appointment communications via WhatsApp / Email.</label>
+                        </div>
+                        <div class="form-group full-width">
+                            <button type="submit" class="btn-submit" id="submitBtn"><i class="fas fa-calendar-check"></i> Book Appointment Now</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+ <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <i class="fas fa-tooth"></i>
+                        <span>Swarna Dental Care</span>
+                    </div>
+                    <p>Providing trusted dental care with modern technology and compassionate service since 2016.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../About/index.html">About</a></li>
+                        <li><a href="../Services/index.html">Services</a></li>
+                        <li><a href="index.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Baramunda, Bhubaneswar</li>
+                        <li><i class="fas fa-phone-alt"></i> +91 80939 74393</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 10AM-1PM, 5PM-8PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Swarna Dental Care. All Rights Reserved · Since 2016</p>
+                <p class="powered-by">Powered by <a href="https://jyotiranswain.github.io/powercloud/" target="_blank">PowerCloud</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzkZTuOUM2n92DSQAb6cbtCOv02b2kvKFlA9AhfhIzaIi5pvhvTQQ_TbFA29fNb2_vDkQ/exec';
+
+        async function submitAppointment(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.innerText = 'Submitting...';
+
+            const payload = {
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                mobile: document.getElementById('mobile').value,
+                age: document.getElementById('age').value,
+                gender: document.getElementById('gender').value,
+                address: document.getElementById('address').value,
+                preferredDate: document.getElementById('preferredDate').value,
+                preferredTimeSlot: document.getElementById('preferredTimeSlot').value,
+                typeOfVisit: document.getElementById('typeOfVisit').value,
+                primaryProblem: document.getElementById('primaryProblem').value,
+                duration: document.getElementById('duration').value,
+                painLevel: document.getElementById('painLevel').value,
+                medicalConditions: document.getElementById('medicalConditions').value,
+                consent: document.getElementById('consent').checked
+            };
+
+            try {
+                const res = await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({ action: 'submitAppointment', payload })
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    alert(`Appointment Booked Successfully! Your Booking ID is: ${data.bookingId}`);
+                    document.getElementById('appointmentForm').reset();
+                } else {
+                    alert('Submission failed: ' + data.message);
+                }
+            } catch (err) {
+                alert('Network error. Please try again.');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-calendar-check"></i> Book Appointment Now';
+            }
+        }
+    </script>
+</body>
+</html>
