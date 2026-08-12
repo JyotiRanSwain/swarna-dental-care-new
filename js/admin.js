@@ -1,13 +1,13 @@
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzkZTuOUM2n92DSQAb6cbtCOv02b2kvKFlA9AhfhIzaIi5pvhvTQQ_TbFA29fNb2_vDkQ/exec';
 const token = localStorage.getItem("sdc_token");
 
-if (!token && !window.location.pathname.includes("login.html")) {
-    window.location.href = "login.html";
+if (!token && !window.location.pathname.includes("index.html")) {
+    window.location.href = "index.html";
 }
 
 function logout() {
     localStorage.removeItem("sdc_token");
-    window.location.href = "login.html";
+    window.location.href = "index.html";
 }
 
 // Tab Switcher
