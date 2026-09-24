@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Swarna Dental Care</title>
+    <title>Dental Blog | Tips & Advice from Swarna Dental Care, Bhubaneswar</title>
     
-    <meta name="description" content="Read helpful dental tips and insights from Swarna Dental Care experts.">
-    
+    <meta name="description" content="Read helpful dental tips, oral hygiene advice, and treatment insights from Swarna Dental Care, Baramunda, Bhubaneswar.">
+    <meta name="keywords" content="Dental Blog, Oral Hygiene Tips, Dental Care Advice Bhubaneswar, Swarna Dental Care Blog">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://swarnadentalcare.in/Blog/">
+    <meta property="og:title" content="Dental Blog – Swarna Dental Care">
+    <meta property="og:description" content="Expert dental tips and insights from Swarna Dental Care, Baramunda, Bhubaneswar.">
+    <meta property="og:url" content="https://swarnadentalcare.in/Blog/">
+    <meta property="og:type" content="website">    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
@@ -16,6 +22,8 @@
     
     <link rel="icon" type="image/png" href="../images/logo.png">
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/cursor.css">
+    <link rel="stylesheet" href="../css/social-bar.css">
     <style>
         .blog-loading {
             text-align: center;
@@ -78,12 +86,13 @@
                 <li><a href="../index.html" class="nav-link">Home</a></li>
                 <li><a href="../About/index.html" class="nav-link">About</a></li>
                 <li><a href="../Services/index.html" class="nav-link">Services</a></li>
+                <li><a href="../Problems/index.html" class="nav-link">Problems We Treat</a></li>
                 <li><a href="index.html" class="nav-link active">Blog</a></li>
                 <li><a href="../Contact/index.html" class="nav-link">Contact</a></li>
                 <li>
-                    <a href="tel:+918093974393" class="btn-call-nav">
-                        <i class="fas fa-phone-alt"></i>
-                        <span>Call Now</span>
+                    <a href="../Appointment/index.html" class="btn-call-nav">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Get Appointment</span>
                     </a>
                 </li>
             </ul>
@@ -102,6 +111,11 @@
         <div class="page-hero-content">
             <h1 data-aos="fade-up">Dental Blog</h1>
             <p data-aos="fade-up" data-aos-delay="100">Expert Tips, Insights & Dental Care Advice</p>
+            <div class="google-review-badge shine-badge" style="margin-top:1.5rem;" data-aos="fade-up" data-aos-delay="200">
+                <span class="g-logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></span>
+                <span class="stars-mini"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                <span>5.0 Rated Clinic</span>
+            </div>
         </div>
     </section>
 
@@ -187,6 +201,27 @@
         .blog-page-btn:disabled { opacity: 0.5; cursor: not-allowed; }
     </style>
 
+    <!-- Social Media Bar -->
+    <div class="social-media-bar">
+        <button class="social-bar-toggle" title="Follow Us">
+            <i class="fas fa-share-alt"></i>
+        </button>
+        <div class="social-bar-links">
+            <a href="https://www.facebook.com/share/1LB9zmMrTS/?mibextid=wwXIfr" target="_blank" title="Facebook" data-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/swarna_dental_care" target="_blank" title="Instagram" data-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://share.google/HYoYxW5LztIufdFtY" target="_blank" title="Google Reviews" data-label="Google Reviews">
+                <i class="fab fa-google"></i>
+            </a>
+            <a href="https://wa.me/918093974393" target="_blank" title="WhatsApp" data-label="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -205,6 +240,7 @@
                         <li><a href="../index.html">Home</a></li>
                         <li><a href="../About/index.html">About</a></li>
                         <li><a href="../Services/index.html">Services</a></li>
+                        <li><a href="../Problems/index.html">Problems We Treat</a></li>
                         <li><a href="../Contact/index.html">Contact</a></li>
                     </ul>
                 </div>
@@ -213,7 +249,8 @@
                     <h4>Contact Info</h4>
                     <ul>
                         <li><i class="fas fa-map-marker-alt"></i> Baramunda, Bhubaneswar</li>
-                        <li><i class="fas fa-phone-alt"></i> +91 80939 74393</li>
+                        <li><i class="fas fa-phone-alt"></i> <a href="tel:+918093974393">+91 80939 74393</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:info@swarnadentalcare.in">info@swarnadentalcare.in</a></li>
                         <li><i class="fas fa-clock"></i> Mon-Sat: 10AM-1PM, 5PM-8PM</li>
                     </ul>
                 </div>
@@ -269,6 +306,7 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../js/shared.js"></script>
+    <script src="../js/social-bar.js"></script>
     <script src="../js/swaboot.js"></script>
     <script src="../js/blog.js"></script>
 </body>

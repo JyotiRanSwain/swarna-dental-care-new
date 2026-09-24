@@ -9,69 +9,7 @@ AOS.init({
     delay: 100
 });
 
-// ===== CUSTOM CURSOR WITH LERP EFFECT =====
-const cursor = document.createElement('div');
-cursor.className = 'cursor-dot';
-document.body.appendChild(cursor);
-
-const cursorOutline = document.createElement('div');
-cursorOutline.className = 'cursor-outline';
-document.body.appendChild(cursor.parentNode.insertBefore(cursorOutline, cursor));
-
-let cursorX = 0;
-let cursorY = 0;
-let outlineX = 0;
-let outlineY = 0;
-let isMouseMoving = false;
-
-document.addEventListener('mousemove', (e) => {
-    cursorX = e.clientX;
-    cursorY = e.clientY;
-    cursor.style.transform = `translate(${cursorX - 5}px, ${cursorY - 5}px)`;
-    isMouseMoving = true;
-});
-
-// Lerp animation for outline
-function updateCursorOutline() {
-    outlineX += (cursorX - outlineX) * 0.15;
-    outlineY += (cursorY - outlineY) * 0.15;
-    cursorOutline.style.transform = `translate(${outlineX - 15}px, ${outlineY - 15}px)`;
-    
-    if (isMouseMoving) {
-        requestAnimationFrame(updateCursorOutline);
-    }
-}
-
-document.addEventListener('mouseenter', () => {
-    cursor.style.opacity = '1';
-    cursorOutline.style.opacity = '1';
-    isMouseMoving = true;
-    updateCursorOutline();
-});
-
-document.addEventListener('mouseleave', () => {
-    cursor.style.opacity = '0';
-    cursorOutline.style.opacity = '0';
-    isMouseMoving = false;
-});
-
-// Make cursor bigger on interactive elements
-document.addEventListener('mouseover', (e) => {
-    if (e.target.tagName === 'A' || 
-        e.target.tagName === 'BUTTON' || 
-        e.target.classList.contains('service-card') ||
-        e.target.classList.contains('gallery-card') ||
-        e.target.classList.contains('blog-card') ||
-        e.target.classList.contains('testimonial-card') ||
-        e.target.closest('a') ||
-        e.target.closest('button')) {
-        cursorOutline.classList.add('cursor-active');
-    }
-});
-
-document.addEventListener('mouseout', (e) => {
-    cursorOutline.classList.remove('cursor-active');
-});
+// ===== CUSTOM CURSOR: DISABLED — normal system pointer is used site-wide =====
 
 // Mobile Menu Toggle
 const hamburger = document.getElementById('hamburger');
@@ -227,6 +165,66 @@ document.addEventListener('click', (e) => {
         followUsSidebar.classList.remove('show');
     }
 });
+
+// ===== SERVICE / PROBLEM CATEGORY TABS (Services & other tabbed pages) =====
+// Works automatically wherever .service-tab-btn + .service-category-panel exist.
+const tabButtons = document.querySelectorAll('.service-tab-btn');
+const tabPanels = document.querySelectorAll('.service-category-panel');
+
+if (tabButtons.length && tabPanels.length) {
+    tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-tab');
+
+            tabButtons.forEach(b => b.classList.remove('active'));
+            tabPanels.forEach(p => p.classList.remove('active'));
+
+            btn.classList.add('active');
+            const panel = document.getElementById(target);
+            if (panel) {
+                panel.classList.add('active');
+                if (typeof AOS !== 'undefined') {
+                    setTimeout(() => AOS.refresh(), 60);
+                }
+            }
+        });
+    });
+}
+
+// ===== ANIMATED COUNTERS (elements with [data-counter]) =====
+const counterEls = document.querySelectorAll('[data-counter]');
+
+if (counterEls.length && 'IntersectionObserver' in window) {
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseFloat(el.getAttribute('data-counter'));
+                const suffix = el.getAttribute('data-suffix') || '';
+                const isDecimal = target % 1 !== 0;
+                let current = 0;
+                const duration = 1400;
+                const stepTime = 16;
+                const steps = duration / stepTime;
+                const increment = target / steps;
+
+                const tick = () => {
+                    current += increment;
+                    if (current >= target) {
+                        el.textContent = (isDecimal ? target.toFixed(1) : Math.round(target)) + suffix;
+                    } else {
+                        el.textContent = (isDecimal ? current.toFixed(1) : Math.round(current)) + suffix;
+                        requestAnimationFrame(tick);
+                    }
+                };
+                tick();
+                counterObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.4 });
+
+    counterEls.forEach(el => counterObserver.observe(el));
+}
 
 // Console branding
 console.log(

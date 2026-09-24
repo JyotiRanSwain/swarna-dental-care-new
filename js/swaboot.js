@@ -3,7 +3,7 @@
     const QA = [
         {
             patterns: ["appointment", "book", "schedule", "visit", "reserve"],
-            answer: "You can book an appointment easily! 📅 Fill the online form: <a href='https://jyotiranswain.github.io/swarna-dental-care-new/Appointment/index.html' target='_blank' style='color:var(--primary);font-weight:600'>Click here to Book</a>, or call us at <a href='tel:+918093974393' style='color:var(--primary);font-weight:600'>+91 80939 74393</a>."
+            answer: "You can book an appointment easily! 📅 Fill the online form: <a href='/Appointment/index.html' target='_blank' style='color:var(--primary);font-weight:600'>Click here to Book</a>, or call us at <a href='tel:+918093974393' style='color:var(--primary);font-weight:600'>+91 80939 74393</a>."
         },
         {
             patterns: ["tooth pain", "toothache", "pain", "ache", "hurts"],
@@ -42,8 +42,16 @@
             answer: "Our clinic is led by <strong>Dr. Sibarpita Subhadarshi Sahu</strong> 👩‍⚕️<br>• BDS from S.O.A University<br>• Registration No: 1567A<br>Trusted by 2500+ patients since 2016!"
         },
         {
-            patterns: ["whatsapp", "message", "contact", "reach"],
-            answer: "You can reach us via:<br>📞 Call: <a href='tel:+918093974393' style='color:var(--primary);font-weight:600'>+91 80939 74393</a><br>💬 WhatsApp: <a href='https://wa.me/918093974393' target='_blank' style='color:var(--primary);font-weight:600'>Chat on WhatsApp</a>"
+            patterns: ["whatsapp", "message", "contact", "reach", "email"],
+            answer: "You can reach us via:<br>📞 Call: <a href='tel:+918093974393' style='color:var(--primary);font-weight:600'>+91 80939 74393</a><br>💬 WhatsApp: <a href='https://wa.me/918093974393' target='_blank' style='color:var(--primary);font-weight:600'>Chat on WhatsApp</a><br>✉️ Email: <a href='mailto:info@swarnadentalcare.in' style='color:var(--primary);font-weight:600'>info@swarnadentalcare.in</a>"
+        },
+        {
+            patterns: ["review", "reviews", "google review", "rating", "feedback"],
+            answer: "We're rated 5.0 ⭐ on Google from 100+ happy patients! 🙏 <a href='https://share.google/HYoYxW5LztIufdFtY' target='_blank' style='color:var(--primary);font-weight:600'>Read our reviews</a> or leave one of your own — we'd love to hear from you!"
+        },
+        {
+            patterns: ["bad breath", "halitosis", "bleeding gum", "crooked", "gum disease", "denture repair", "grinding", "chipped", "cracked tooth", "stained teeth", "problem"],
+            answer: "We treat a wide range of dental problems — bad breath, bleeding gums, crooked teeth, gum disease, missing teeth, denture repair, teeth grinding, chipped/cracked teeth and stained teeth. 🦷 <a href='/Problems/index.html' target='_blank' style='color:var(--primary);font-weight:600'>See Problems We Treat</a> for details on each."
         },
         {
             patterns: ["hi", "hello", "hey", "namaste", "hii"],
@@ -81,6 +89,7 @@
         isOpen = !isOpen;
         window_?.classList.toggle('swaboot-visible', isOpen);
         launcher?.classList.toggle('swaboot-open', isOpen);
+        document.body.classList.toggle('swaboot-chat-open', isOpen);
         if (isOpen) {
             badge.style.display = 'none';
             if (!greeted) {
