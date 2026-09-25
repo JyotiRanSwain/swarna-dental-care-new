@@ -1471,8 +1471,15 @@ a, button, .btn, .service-card, .gallery-card, .testimonial-card {
 
 .footer-brand p {
     color: var(--light-dark);
-    line-height: 1.6;
+    line-height: 1.75;
     font-size: 0.88rem;
+    max-width: 360px;
+    letter-spacing: 0.1px;
+}
+
+.footer-brand-break {
+    display: block;
+    content: '';
 }
 
 .footer-links h4,
@@ -1946,6 +1953,20 @@ body.swaboot-chat-open .scroll-top {
     
     .footer-content {
         grid-template-columns: 1fr;
+    }
+
+    .footer-brand p {
+        max-width: 460px;
+    }
+}
+
+@media (max-width: 600px) {
+    .footer-brand-break {
+        display: none;
+    }
+
+    .footer-brand p {
+        max-width: 100%;
     }
 }
 
