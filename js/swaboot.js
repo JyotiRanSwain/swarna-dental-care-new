@@ -3,7 +3,7 @@
     const QA = [
         {
             patterns: ["appointment", "book", "schedule", "visit", "reserve"],
-            answer: "You can book an appointment easily! 📅 Fill the online form: <a href='/Appointment/index.html' target='_blank' style='color:var(--primary);font-weight:600'>Click here to Book</a>, or call us at <a href='tel:+918093974393' style='color:var(--primary);font-weight:600'>+91 80939 74393</a>."
+            answer: "You can book an appointment easily! 📅 Fill the online form: <a href='/Appointment' target='_blank' style='color:var(--primary);font-weight:600'>Click here to Book</a>, or call us at <a href='tel:+918093974393' style='color:var(--primary);font-weight:600'>+91 80939 74393</a>."
         },
         {
             patterns: ["tooth pain", "toothache", "pain", "ache", "hurts"],
@@ -51,7 +51,7 @@
         },
         {
             patterns: ["bad breath", "halitosis", "bleeding gum", "crooked", "gum disease", "denture repair", "grinding", "chipped", "cracked tooth", "stained teeth", "problem"],
-            answer: "We treat a wide range of dental problems — bad breath, bleeding gums, crooked teeth, gum disease, missing teeth, denture repair, teeth grinding, chipped/cracked teeth and stained teeth. 🦷 <a href='/Problems/index.html' target='_blank' style='color:var(--primary);font-weight:600'>See Problems We Treat</a> for details on each."
+            answer: "We treat a wide range of dental problems — bad breath, bleeding gums, crooked teeth, gum disease, missing teeth, denture repair, teeth grinding, chipped/cracked teeth and stained teeth. 🦷 <a href='/Problems' target='_blank' style='color:var(--primary);font-weight:600'>See Problems We Treat</a> for details on each."
         },
         {
             patterns: ["hi", "hello", "hey", "namaste", "hii"],

@@ -226,6 +226,12 @@ if (counterEls.length && 'IntersectionObserver' in window) {
     counterEls.forEach(el => counterObserver.observe(el));
 }
 
+// ===== DYNAMIC COPYRIGHT YEAR =====
+const currentYearEl = document.getElementById('current-year');
+if (currentYearEl) {
+    currentYearEl.textContent = new Date().getFullYear();
+}
+
 // Console branding
 console.log(
     '%c🦷 Swarna Dental Care',

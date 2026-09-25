@@ -1,0 +1,43 @@
+# =====================================================================
+#  Swarna Dental Care — Clean URL Rewrite Rules (Apache / .htaccess)
+#  Makes /About, /Services, /Problems, /Blog, /Contact, /Appointment
+#  work WITHOUT showing "index.html" or a trailing slash in the browser.
+# =====================================================================
+
+RewriteEngine On
+RewriteBase /
+
+# ---------------------------------------------------------------
+# 1) If someone requests .../index.html directly, 301-redirect to
+#    the clean folder URL (e.g. /About/index.html -> /About)
+# ---------------------------------------------------------------
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /(.*)/index\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# ---------------------------------------------------------------
+# 2) If someone requests a folder WITH a trailing slash, 301-redirect
+#    to the same URL WITHOUT the trailing slash (e.g. /About/ -> /About)
+#    (Root "/" is left untouched.)
+# ---------------------------------------------------------------
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /(.+)/[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# ---------------------------------------------------------------
+# 3) Internally serve the folder's index.html for the clean URL,
+#    without changing what appears in the address bar.
+#    (e.g. a request for /About quietly serves /About/index.html)
+# ---------------------------------------------------------------
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
+RewriteRule ^([^/]+)/?$ $1/index.html [L]
+
+# ---------------------------------------------------------------
+# Optional: force www-less HTTPS (uncomment once SSL is active)
+# ---------------------------------------------------------------
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ---------------------------------------------------------------
+# Custom 404 page (optional — create /404.html if you add one)
+# ---------------------------------------------------------------
+# ErrorDocument 404 /404.html
